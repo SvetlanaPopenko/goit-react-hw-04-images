@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal =({onClick, largeImageURL})=> {
+const Modal = ({ onClick, largeImageURL }) => {
   useEffect(() => {
     const handleKeyDown = evt => {
       if (evt.code === 'Escape') {
@@ -15,9 +15,8 @@ const Modal =({onClick, largeImageURL})=> {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-    }
+    };
   }, [onClick]);
-    
 
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
@@ -25,21 +24,19 @@ const Modal =({onClick, largeImageURL})=> {
     }
   };
 
-      return createPortal(
-      <Overlay onClick={handleBackdropClick}>
-        <ModalWindow>
-          <img src={largeImageURL} alt="" />
-        </ModalWindow>
-      </Overlay>,
-      modalRoot
-    );
-  }
-
+  return createPortal(
+    <Overlay onClick={handleBackdropClick}>
+      <ModalWindow>
+        <img src={largeImageURL} alt="" />
+      </ModalWindow>
+    </Overlay>,
+    modalRoot
+  );
+};
 
 Modal.propTypes = {
   largeImageURL: PropTypes.string,
-  onClick:PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
-  
-export default Modal;
 
+export default Modal;
