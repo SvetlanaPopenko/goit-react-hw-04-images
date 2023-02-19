@@ -13,7 +13,7 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleFormSubmit = newSearchQuery => {
     if (newSearchQuery === '' || newSearchQuery === searchQuery) {
@@ -24,7 +24,7 @@ export const App = () => {
     setImages([]);
     setPage(1);
     setTotal(0);
-    setError(false);
+    setError(null);
   };
 
   const handleOnLoading = () => {
@@ -48,8 +48,7 @@ export const App = () => {
         return data.hits;
       } catch (error) {
         setImages([]);
-        setError(true);
-        console.log(error);
+        setError(error);
       } finally {
         setIsLoading(false);
       }
@@ -58,7 +57,7 @@ export const App = () => {
       return;
     }
     fetchImage(searchQuery, page);
-  }, [page, searchQuery]);
+  }, [page, searchQuery,error]);
 
   return (
     <AppWrp>
