@@ -11,7 +11,7 @@ const searchParams = new URLSearchParams({
   orientation: 'horizontal',
 });
 
-export const fetchApi = async (searchValue, page = 1) => {
+export const fetchApi = async (searchValue, page) => {
   try {
     const response = await axios.get(
       `?key=${API_KEY}&q=${searchValue}&${searchParams}&page=${page}&per_page=${PER_PAGE}`
