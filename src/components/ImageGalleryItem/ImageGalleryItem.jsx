@@ -24,7 +24,7 @@ const ImageGalleryItem = ({ image }) => {
         />
       </ImageGalleryItemWrp>
       {showModal && (
-        <Modal largeImageURL={largeImageURL} onClose={toggleModal} />
+        <Modal largeImageURL={largeImageURL} onClick={toggleModal} />
       )}
     </>
   );
